@@ -1,43 +1,14 @@
 let myLibrary=[];
 let id=0;
-function Book(title, author, pages, read){
-    this.title=title;
-    this.author=author;
-    this.pages=pages;
-    this.read=read;
-    this.id=id++;
-}
-
-let title;
-let author;
-let pages;
-let read;
-
-const showbtn=document.querySelector('.open');
-let dialog=document.getElementById("dialog");
-const  submit=document.querySelector('.submit');
-let close=document.querySelector('.close-btn');
-
-
-showbtn.addEventListener("click", ()=>{
-    dialog.value='';
-    dialog.querySelector('#title').value='';
-    dialog.querySelector('#author').value='';
-    dialog.querySelector('#pages').value='';
-    
-    dialog.showModal();
-});
-
-
-
-
-let container=document.querySelector('.container');
-
-let i=0;
-let btn2;
-
-
-function display(){
+class Book{
+    constructor(title, author, pages, read){
+        this.title=title;
+        this.author=author;
+        this.pages=pages;
+        this.read=read;
+        this.id=id++;
+    }
+    display(){
     
         container.innerHTML='';
 
@@ -80,7 +51,7 @@ function display(){
             }
             btn2.addEventListener('click',()=>{
                 myLibrary.splice(index,1);
-                display();
+                book.display();
             })
             div.appendChild(p1);
             div.appendChild(p2);
@@ -91,6 +62,39 @@ function display(){
         })
    
 }
+}
+
+
+let title;
+let author;
+let pages;
+let read;
+
+const showbtn=document.querySelector('.open');
+let dialog=document.getElementById("dialog");
+const  submit=document.querySelector('.submit');
+let close=document.querySelector('.close-btn');
+
+
+showbtn.addEventListener("click", ()=>{
+    dialog.value='';
+    dialog.querySelector('#title').value='';
+    dialog.querySelector('#author').value='';
+    dialog.querySelector('#pages').value='';
+    
+    dialog.showModal();
+});
+
+
+
+
+let container=document.querySelector('.container');
+
+let i=0;
+let btn2;
+
+
+
 
 
 
@@ -118,7 +122,7 @@ submit.addEventListener("click",()=>{
         myLibrary.push(book);
        
 
-        display();
+        book.display();
     }
     else{
         alert("MISSING INFO")
